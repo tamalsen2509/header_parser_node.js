@@ -43,11 +43,15 @@ app.get('/api/hello', (req, res) => {
 
 
 app.get('/api/mydetails', (req, res) => {
-    let headers = req.headers
+    let headers = req.headers;
+    let geo = geoIp.lookup(req.ip)
+
     message.obj.userHeader = {
         ipadress: req.ip,
         language :headers["accept-language"] ,
-        browser_info : headers["user-agent"]
+        browser_info: headers["user-agent"],
+        country: geo.country,
+        city: geo.city
     }
     res.status(200).json(message.obj.userHeader)
 })
