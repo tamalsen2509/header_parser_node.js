@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
 
-
+// setting up router for api endpoins /mydetails
 app.use('/api/v1', require('./routes/endpoins'));
 
 
